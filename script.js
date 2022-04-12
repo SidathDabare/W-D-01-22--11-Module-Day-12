@@ -7,7 +7,7 @@ const changeTitle = function (newTitle) {
   document.querySelector(".myHeading").innerText = newTitle;
   return newTitle;
 };
-changeTitle("Something Else");
+changeTitle("This is new title");
 
 /* EXERCISE 2
        Write a function for changing the class of the title of the 
@@ -56,10 +56,12 @@ changeUrls();
 const addToTheSecond = function (content) {
   let liNode = document.createElement("li");
   let olNode = document.querySelector("#secondList ");
-  olNode.appendChild(liNode, olNode.lastElementChild).innerText = content;
+  liNode.innerText = content;
+  olNode.appendChild(liNode);
   return content;
 };
 addToTheSecond("New item of the ordered list");
+
 /* EXERCISE 6
        Write a function for adding a second paragraph to the first 
        div.
@@ -69,7 +71,8 @@ const addParagraph = function (content) {
   let newParagrph = document.createElement("p");
   let firstDiv = document.getElementsByTagName("div");
   for (let i = 0; i < firstDiv.length; i++) {
-    firstDiv[0].appendChild(newParagrph).innerHTML = content;
+    newParagrph.innerHTML = content;
+    firstDiv[0].appendChild(newParagrph);
   }
 };
 addParagraph(
@@ -120,14 +123,22 @@ const makeItClickable = function (heading) {
   }
 };
 //console.log(makeItClickable());
+
 /* EXERCISE 10
        Change the footer text with something else when the user clicks 
        on it.
       */
 
-const changeFooterText = function () {
-  //
+const changeFooterText = function (newText) {
+  let footer = document.querySelector(".footer");
+  footer.addEventListener("click", function () {
+    footer.textContent = newText;
+    console.log("click");
+  });
 };
+changeFooterText(
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
+);
 
 /* EXERCISE 11
        Attach an event listener to the input field in the page for
@@ -135,7 +146,9 @@ const changeFooterText = function () {
       */
 
 const inputField = document.getElementById("input-field");
-// ...
+inputField.addEventListener("keydown", function (event) {
+  console.log(event.target.value);
+});
 
 /* EXERCISE 12
        Create a welcome alert message when the page successfully 
@@ -143,7 +156,7 @@ const inputField = document.getElementById("input-field");
       */
 
 window.onload = function () {
-  //
+  // alert("Welcome");
 };
 
 /* EXERCISE 13
